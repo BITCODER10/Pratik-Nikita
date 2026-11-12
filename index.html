@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#450A0A">
+    <meta name="description" content="शुभ विवाह — प्रतीक आणि निकिता यांचे लग्नाचे आमंत्रण, जळगाव">
+    <title>शुभ विवाह | प्रतीक &amp; निकिता</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@400;600;700&family=Noto+Sans+Devanagari:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===== RESET ===== */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        /* ===== VARIABLES ===== */
+        :root {
+            --maroon:       #6B1515;
+            --deep-maroon:  #450A0A;
+            --mid-maroon:   #8B2020;
+            --saffron:      #D4621A;
+            --gold:         #C8972A;
+            --gold-lt:      #E8C060;
+            --cream:        #FFFCF0;
+            --warm:         #FFF8E0;
+            --dark:         #2C1810;
+            --text-sec:     #5A3020;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: #DEC898;
+            background-image:
+                radial-gradient(ellipse 60% 40% at 10% 10%, rgba(107,21,21,0.10) 0%, transparent 70%),
+                radial-gradient(ellipse 60% 40% at 90% 90%, rgba(200,151,42,0.14) 0%, transparent 70%);
+            font-family: 'Noto Sans Devanagari', 'Mangal', sans-serif;
+            color: var(--dark);
+            min-height: 100vh;
+            padding: 16px 14px 32px;
+        }
+
+        /* ===== WRAPPER ===== */
+        .wrap { max-width: 450px; margin: 0 auto; }
+
+        /* ===== CARD ===== */
+        .card {
+            background: var(--cream);
+            border-radius: 2px;
+            box-shadow:
+                0 0 0 2px var(--gold),
+                0 0 0 7px rgba(200,151,42,0.18),
+                0 0 0 9px var(--gold),
+                0 10px 40px rgba(69,10,10,0.25);
+            overflow: hidden;
+            animation: revealCard 1s cubic-bezier(0.22,1,0.36,1) both;
+        }
+
+        @keyframes revealCard {
+            from { opacity: 0; transform: translateY(20px) scale(0.97); }
+            to   { opacity: 1; transform: translateY(0)   scale(1);    }
+        }
+
+        /* ===== DECORATIVE BORDER STRIP (किनार) ===== */
+        .kinar {
+            height: 10px;
+            background: repeating-linear-gradient(
+                90deg,
+                var(--deep-maroon) 0px,  var(--deep-maroon) 16px,
+                var(--gold)        16px, var(--gold)        20px,
+                var(--saffron)     20px, var(--saffron)     36px,
+                var(--gold)        36px, var(--gold)        40px
+            );
+        }
+
+        /* ===== GANESH HEADER ===== */
+        .header {
+            background: linear-gradient(160deg, var(--deep-maroon) 0%, var(--maroon) 65%, var(--mid-maroon) 100%);
+            padding: 28px 20px 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: repeating-linear-gradient(
+                45deg,
+                transparent 0px, transparent 14px,
+                rgba(200,151,42,0.055) 14px, rgba(200,151,42,0.055) 15px
+            );
+            pointer-events: none;
+        }
+
+        /* Lotus SVG */
+        .lotus-svg { display: block; margin: 0 auto 14px; }
+
+        /* Om symbol */
+        .om {
+            font-size: 54px;
+            color: var(--gold-lt);
+            display: block;
+            margin-bottom: 6px;
+            position: relative;
+            animation: omGlow 3.5s ease-in-out infinite;
+        }
+
+        @keyframes omGlow {
+            0%, 100% { text-shadow: 0 0 10px rgba(232,192,96,0.4); }
+            50%       { text-shadow: 0 0 28px rgba(232,192,96,0.9), 0 0 56px rgba(232,192,96,0.3); }
+        }
+
+        .header-rule {
+            border: none;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold-lt), transparent);
+            margin: 10px 24px;
+        }
+
+        .ganesh-invoc {
+            color: var(--gold-lt);
+            font-family: 'Noto Serif Devanagari', 'Mangal', serif;
+            font-size: 15px;
+            font-weight: 400;
+            line-height: 2;
+            position: relative;
+        }
+
+        .ganesh-sub {
+            font-size: 12px;
+            color: rgba(232,192,96,0.72);
+            display: block;
+        }
+
+        /* ===== SHUBH VIVAH BANNER ===== */
+        .vivah-banner {
+            background: linear-gradient(135deg, var(--deep-maroon), var(--mid-maroon));
+            color: var(--gold-lt);
+            font-family: 'Noto Serif Devanagari', 'Mangal', serif;
+            font-size: 25px;
+            font-weight: 700;
+            text-align: center;
+            padding: 15px 20px;
+            letter-spacing: 3px;
+            border-top: 2px solid rgba(200,151,42,0.45);
+            border-bottom: 2px solid rgba(200,151,42,0.45);
+            text-shadow: 1px 2px 5px rgba(0,0,0,0.35);
+        }
+
+        /* ===== NAMES SECTION ===== */
+        .names {
+            padding: 32px 24px 28px;
+            text-align: center;
+            background: linear-gradient(180deg, #FFFCF0 0%, #FFF8E0 100%);
+        }
+
+        .family-intro {
+            font-size: 13px;
+            color: var(--text-sec);
+            line-height: 2;
+        }
+
+        .family-intro em {
+            font-style: normal;
+            color: var(--gold);
+            font-size: 11.5px;
+        }
+
+        .ornament { text-align: center; color: var(--gold); font-size: 15px; letter-spacing: 7px; margin: 10px 0; }
+        .ornament-sm { text-align: center; color: var(--gold); font-size: 13px; letter-spacing: 5px; margin: 7px 0; }
+
+        .name-big {
+            font-family: 'Noto Serif Devanagari', 'Mangal', serif;
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--maroon);
+            line-height: 1.25;
+            margin: 10px 0 5px;
+            letter-spacing: -0.5px;
+        }
+
+        .name-full {
+            font-family: 'Noto Serif Devanagari', 'Mangal', serif;
+            font-size: 16px;
+            color: var(--text-sec);
+            margin-bottom: 6px;
+        }
+
+        /* Connector row */
+        .connector {
+            margin: 22px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .conn-line {
+            flex: 1;
+            height: 1px;
+        }
+
+        .conn-line-l { background: linear-gradient(90deg, transparent, var(--gold)); }
+        .conn-line-r { background: linear-gradient(90deg, var(--gold), transparent); }
+
+        .conn-text {
+            font-family: 'Noto Serif Devanagari', 'Mangal', serif;
+            font-size: 13px;
+            color: var(--gold);
+            white-space: nowrap;
+            padding: 6px 14px;
+            border: 1px solid var(--gold);
+            border-radius: 2px;
+            background: rgba(200,151,42,0.07);
+        }
+
+        /* ===== SECTION ===== */
+        .section {
+            padding: 24px 20px;
+            border-top: 1px solid rgba(200,151,42,0.22);
+        }
+
+        .sec-head {
+            font-family: 'Noto Serif Devanagari', 'Mangal', serif;
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--maroon);
+            text-align: center;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sec-head::before {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold));
+        }
+
+        .sec-head::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--gold), transparent);
+        }
+
+        /* ===== MUHURTA BOX ===== */
+        .muhurta-box {
+            background: linear-gradient(135deg, #FFF8E0, #FFF3C5);
+            border: 2px solid var(--gold);
+            border-radius: 6px;
+            padding: 20px 16px;
+            text-align: center;
+        }
+
+        .muhurta-icon { font-size: 34px; margin-bottom: 10px; display: block; }
+
+        .muhurta-day {
+            font-family: 'Noto Serif Devanagari', 'Mangal', serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--maroon);
+            line-height: 1.6;
+        }
+
+        .muhurta-label {
+            font-size: 11px;
+            color: var(--gold);
+            letter-spacing: 0.5px;
+            margin: 7px 0 3px;
+            text-transform: uppercase;
+        }
+
+        .muhurta-time {
+            font-family: 'Noto Serif Devanagari', 'Mangal', serif;
+            font-size: 19px;
+            font-weight: 700;
+            color: var(--saffron);
+        }
+
+        .muhurta-nax {
+            font-size: 11px;
+            color: var(--text-sec);
+            margin-top: 8px;
+        }
+
+        /* ===== COUNTDOWN ===== */
+        .countdown {
+            background: linear-gradient(135deg, var(--deep-maroon), var(--maroon));
+            border-radius: 6px;
+            padding: 14px 12px;
+            margin-top: 12px;
+            text-align: center;
+        }
+
+        .cd-label { font-size: 11px; color: rgba(255,255,255,0.65); margin-bottom: 6px; }
+
+        .cd-time {
+            font-family: 'Noto Serif Devanagari', 'Mangal', serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--gold-lt);
+            letter-spacing: 1px;
+        }
+
+        /* ===== EVENT CARDS ===== */
+        .event-list { display: flex; flex-direction: column; gap: 10px; }
+
+        .event-item {
+            background: linear-gradient(135deg, var(--deep-maroon), var(--mid-maroon));
+            border-radius: 6px;
+            padding: 14px 16px;
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .event-item::after {
+            content: '';
+            position: absolute;
+            top: -20px; right: -20px;
+            width: 72px; height: 72px;
+            border-radius: 50%;
+            background: rgba(200,151,42,0.14);
+        }
+
+        .event-item.main-ev {
+            background: linear-gradient(135deg, #A03200, var(--saffron));
+        }
+
+        .ev-icon { font-size: 28px; flex-shrink: 0; margin-top: 2px; position: relative; }
+
+        .ev-body { flex: 1; position: relative; }
+
+        .ev-title {
+            font-family: 'Noto Serif Devanagari', 'Mangal', serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--gold-lt);
+            margin-bottom: 6px;
+        }
+
+        .ev-detail {
+            font-size: 12.5px;
+            color: rgba(255,255,255,0.88);
+            line-height: 1.95;
+        }
+
+        .ev-detail strong { color: var(--gold-lt); }
+
+        /* ===== VENUE ===== */
+        .venue-box {
+            background: linear-gradient(135deg, #FFF8E0, #FFFCF0);
+            border-left: 4px solid var(--maroon);
+            border-radius: 0 6px 6px 0;
+            padding: 16px;
+        }
+
+        .venue-name {
+            font-family: 'Noto Serif Devanagari', 'Mangal', serif;
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--maroon);
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .venue-addr { font-size: 13px; color: var(--text-sec); line-height: 1.85; }
+
+        .map-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--maroon);
+            color: #fff;
+            padding: 8px 14px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 13px;
+            margin-top: 12px;
+        }
+
+        /* ===== FAMILY GRID ===== */
+        .family-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .fam-side {
+            background: linear-gradient(160deg, #FFF8E0, #FFFCF0);
+            border-top: 3px solid var(--maroon);
+            border-radius: 0 0 6px 6px;
+            padding: 14px 10px;
+        }
+
+        .fam-title {
+            font-family: 'Noto Serif Devanagari', 'Mangal', serif;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--maroon);
+            text-align: center;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(200,151,42,0.28);
+        }
+
+        .fmember {
+            font-size: 11.5px;
+            color: var(--dark);
+            line-height: 1.7;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .fmember-role {
+            display: block;
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--saffron);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* ===== INVITATION CALL ===== */
+        .call {
+            padding: 24px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, #FFF8E0, #FFFCF0);
+            border-top: 1px solid rgba(200,151,42,0.22);
+        }
+
+        .call-text {
+            font-family: 'Noto Serif Devanagari', 'Mangal', serif;
+            font-size: 16px;
+            line-height: 2.3;
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+
+        .call-text strong { color: var(--maroon); font-size: 18px; }
+
+        .contact-box {
+            background: rgba(200,151,42,0.08);
+            border: 1px solid rgba(200,151,42,0.28);
+            border-radius: 6px;
+            padding: 16px;
+        }
+
+        .contact-title {
+            font-size: 11px;
+            color: var(--gold);
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .contact-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 7px 0;
+            border-bottom: 1px solid rgba(200,151,42,0.15);
+        }
+
+        .contact-row:last-child { border-bottom: none; }
+
+        .c-name { font-size: 12px; color: var(--text-sec); flex: 1; line-height: 1.5; }
+        .c-role  { font-size: 10px; color: var(--gold); display: block; }
+
+        .c-num {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--maroon);
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: linear-gradient(160deg, var(--deep-maroon), var(--maroon));
+            padding: 28px 20px 24px;
+            text-align: center;
+            color: var(--gold-lt);
+        }
+
+        .footer-blessing {
+            font-family: 'Noto Serif Devanagari', 'Mangal', serif;
+            font-size: 16px;
+            line-height: 2.3;
+            margin-bottom: 14px;
+        }
+
+        .footer-tag { font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 8px; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 360px) {
+            .name-big { font-size: 34px; }
+            .vivah-banner { font-size: 21px; }
+            .family-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (min-width: 480px) {
+            body { padding: 24px 20px 40px; }
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+<div class="card">
+
+    <!-- TOP BORDER -->
+    <div class="kinar"></div>
+
+    <!-- ===== GANESH HEADER ===== -->
+    <div class="header">
+
+        <!-- Lotus SVG -->
+        <svg class="lotus-svg" width="140" height="88" viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <!-- Outer petals -->
+            <ellipse cx="42"  cy="84" rx="19" ry="44" fill="rgba(200,151,42,0.32)" transform="rotate(-48 42 84)"/>
+            <ellipse cx="158" cy="84" rx="19" ry="44" fill="rgba(200,151,42,0.32)" transform="rotate(48 158 84)"/>
+            <!-- Mid petals -->
+            <ellipse cx="70"  cy="80" rx="21" ry="48" fill="rgba(200,151,42,0.52)" transform="rotate(-25 70 80)"/>
+            <ellipse cx="130" cy="80" rx="21" ry="48" fill="rgba(200,151,42,0.52)" transform="rotate(25 130 80)"/>
+            <!-- Center petal -->
+            <ellipse cx="100" cy="75" rx="22" ry="50" fill="rgba(200,151,42,0.88)"/>
+            <!-- Base water -->
+            <ellipse cx="100" cy="96" rx="40" ry="6"  fill="rgba(200,151,42,0.22)"/>
+            <!-- Stamen -->
+            <circle cx="100" cy="62" r="13" fill="rgba(212,98,26,0.82)"/>
+            <circle cx="100" cy="62" r="7"  fill="rgba(240,192,64,0.95)"/>
+            <circle cx="100" cy="62" r="3"  fill="rgba(107,21,21,0.88)"/>
+        </svg>
+
+        <span class="om">ॐ</span>
+        <hr class="header-rule">
+        <div class="ganesh-invoc">
+            श्री गणेशाय नमः ।
+            <span class="ganesh-sub">शुभस्य शीघ्रम् &nbsp;·&nbsp; सुख, समृद्धी व आनंदाचा शुभारंभ</span>
+        </div>
+    </div>
+
+    <!-- SHUBH VIVAH -->
+    <div class="vivah-banner">✦ &nbsp; शुभ विवाह &nbsp; ✦</div>
+
+    <!-- BOTTOM BORDER -->
+    <div class="kinar"></div>
+
+    <!-- ===== NAMES SECTION ===== -->
+    <div class="names">
+
+        <!-- BRIDE -->
+        <div class="family-intro">
+            श्री. विजय बाळकृष्ण जोशी व सौ. मीना विजय जोशी<br>
+            <em>यांच्या सुकन्या</em>
+        </div>
+        <div class="ornament-sm">❁ &nbsp; ❁ &nbsp; ❁</div>
+        <div class="name-big">कु. निकिता</div>
+        <div class="name-full">निकिता विजय जोशी</div>
+
+        <!-- CONNECTOR -->
+        <div class="connector">
+            <div class="conn-line conn-line-l"></div>
+            <div class="conn-text">विवाहबद्ध होणार आहेत</div>
+            <div class="conn-line conn-line-r"></div>
+        </div>
+
+        <!-- GROOM -->
+        <div class="name-big">श्री. प्रतीक</div>
+        <div class="name-full">प्रतीक सुरेश देशमुख</div>
+        <div class="ornament-sm">❁ &nbsp; ❁ &nbsp; ❁</div>
+        <div class="family-intro" style="margin-top:4px;">
+            श्री. सुरेश प्रकाश देशमुख व सौ. सुनिता सुरेश देशमुख<br>
+            <em>यांच्या सुपुत्राशी</em>
+        </div>
+
+    </div>
+
+    <!-- BORDER -->
+    <div class="kinar"></div>
+
+    <!-- ===== MUHURTA SECTION ===== -->
+    <div class="section">
+        <div class="sec-head">विवाह मुहूर्त</div>
+
+        <div class="muhurta-box">
+            <span class="muhurta-icon">🪔</span>
+            <div class="muhurta-day">
+                रविवार<br>
+                दि. ०८ मार्च, २०२७
+            </div>
+            <div class="muhurta-label">शुभ मुहूर्त वेळ</div>
+            <div class="muhurta-time">सकाळी ११ वाजून २१ मिनिटे</div>
+            <div class="muhurta-nax">उत्तराभाद्रपदा नक्षत्र &nbsp;·&nbsp; वृष लग्न</div>
+        </div>
+
+        <!-- LIVE COUNTDOWN -->
+        <div class="countdown">
+            <div class="cd-label">लग्नाला अजून किती अवकाश</div>
+            <div class="cd-time" id="countdown">गणना होत आहे…</div>
+        </div>
+    </div>
+
+    <!-- ===== EVENTS SECTION ===== -->
+    <div class="section">
+        <div class="sec-head">कार्यक्रम पत्रिका</div>
+
+        <div class="event-list">
+
+            <div class="event-item">
+                <div class="ev-icon">💛</div>
+                <div class="ev-body">
+                    <div class="ev-title">हळद समारंभ</div>
+                    <div class="ev-detail">
+                        <strong>दिनांक:</strong> शनिवार, ०७ मार्च २०२७<br>
+                        <strong>वेळ:</strong> दुपारी ३:०० वाजता<br>
+                        <strong>स्थळ:</strong> श्री. जोशी यांचे निवासस्थान,<br>
+                        &emsp;५, शिवाजीनगर, जळगाव
+                    </div>
+                </div>
+            </div>
+
+            <div class="event-item">
+                <div class="ev-icon">🎵</div>
+                <div class="ev-body">
+                    <div class="ev-title">संगीत संध्या</div>
+                    <div class="ev-detail">
+                        <strong>दिनांक:</strong> शनिवार, ०७ मार्च २०२७<br>
+                        <strong>वेळ:</strong> रात्री ७:३० वाजता<br>
+                        <strong>स्थळ:</strong> श्री लक्ष्मीनारायण मंगल कार्यालय,<br>
+                        &emsp;जळगाव
+                    </div>
+                </div>
+            </div>
+
+            <div class="event-item main-ev">
+                <div class="ev-icon">💍</div>
+                <div class="ev-body">
+                    <div class="ev-title">विवाह सोहळा</div>
+                    <div class="ev-detail">
+                        <strong>दिनांक:</strong> रविवार, ०८ मार्च २०२७<br>
+                        <strong>मुहूर्त:</strong> सकाळी ११:२१ वाजता<br>
+                        <strong>भोजन:</strong> दुपारी १२:३० वाजेपासून
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ===== VENUE SECTION ===== -->
+    <div class="section">
+        <div class="sec-head">विवाह स्थळ</div>
+
+        <div class="venue-box">
+            <div class="venue-name">श्री लक्ष्मीनारायण मंगल कार्यालय</div>
+            <div class="venue-addr">
+                प्लॉट नं. ४२, उद्योगनगर,<br>
+                नेहरू चौक जवळ,<br>
+                जळगाव — ४२५ ००१, महाराष्ट्र
+            </div>
+            <a href="https://maps.app.goo.gl/uEFvTRtzqtpoqNX57" class="map-btn" target="_blank" rel="noopener">
+                📍 Google Maps वर पाहा
+            </a>
+        </div>
+    </div>
+
+    <!-- ===== FAMILY SECTION ===== -->
+    <div class="section">
+        <div class="sec-head">कुटुंब परिचय</div>
+
+        <div class="family-grid">
+
+            <!-- BRIDE'S SIDE -->
+            <div class="fam-side">
+                <div class="fam-title">वधू पक्ष</div>
+
+                <div class="fmember">
+                    <span class="fmember-role">आजोबा</span>
+                    स्व. बाळकृष्ण विठ्ठल जोशी
+                </div>
+                <div class="fmember">
+                    <span class="fmember-role">वडील</span>
+                    श्री. विजय बाळकृष्ण जोशी
+                </div>
+                <div class="fmember">
+                    <span class="fmember-role">आई</span>
+                    सौ. मीना विजय जोशी
+                </div>
+                <div class="fmember">
+                    <span class="fmember-role">भाऊ</span>
+                    कु. राहुल जोशी
+                </div>
+                <div class="fmember">
+                    <span class="fmember-role">काका</span>
+                    श्री. अनिल बाळकृष्ण जोशी
+                </div>
+            </div>
+
+            <!-- GROOM'S SIDE -->
+            <div class="fam-side">
+                <div class="fam-title">वर पक्ष</div>
+
+                <div class="fmember">
+                    <span class="fmember-role">आजोबा</span>
+                    स्व. प्रकाश गोविंद देशमुख
+                </div>
+                <div class="fmember">
+                    <span class="fmember-role">वडील</span>
+                    श्री. सुरेश प्रकाश देशमुख
+                </div>
+                <div class="fmember">
+                    <span class="fmember-role">आई</span>
+                    सौ. सुनिता सुरेश देशमुख
+                </div>
+                <div class="fmember">
+                    <span class="fmember-role">बहीण</span>
+                    कु. पूजा देशमुख
+                </div>
+                <div class="fmember">
+                    <span class="fmember-role">काका</span>
+                    श्री. महेश प्रकाश देशमुख
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ===== INVITATION CALL ===== -->
+    <div class="call">
+
+        <div class="ornament">❁ &nbsp; ✦ &nbsp; ❁</div>
+
+        <div class="call-text">
+            आपण सपरिवार उपस्थित राहून<br>
+            या शुभप्रसंगी आशीर्वाद द्यावेत —<br>
+            <strong>ही आग्रहाची विनंती आहे.</strong>
+        </div>
+
+        <div class="contact-box">
+            <div class="contact-title">संपर्क</div>
+
+            <div class="contact-row">
+                <div class="c-name">
+                    विजय जोशी
+                    <span class="c-role">वधू पिता</span>
+                </div>
+                <a href="tel:+919876543210" class="c-num">📞 98765 43210</a>
+            </div>
+
+            <div class="contact-row">
+                <div class="c-name">
+                    सुरेश देशमुख
+                    <span class="c-role">वर पिता</span>
+                </div>
+                <a href="tel:+919823456789" class="c-num">📞 98234 56789</a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <div class="footer">
+        <div class="ornament" style="color:var(--gold-lt); margin-bottom:14px;">❁ &nbsp; ❁ &nbsp; ❁</div>
+        <div class="footer-blessing">
+            सुख, समृद्धी, आरोग्य व<br>
+            दीर्घायुष्याच्या हार्दिक शुभेच्छा! 🙏
+        </div>
+        <div class="footer-tag">
+            प्रतीक ♡ निकिता &nbsp;·&nbsp; ०८ मार्च २०२७ &nbsp;·&nbsp; जळगाव
+        </div>
+    </div>
+
+    <!-- BOTTOM BORDER -->
+    <div class="kinar"></div>
+
+</div><!-- /card -->
+</div><!-- /wrap -->
+
+<script>
+    // Wedding date in IST
+    const weddingDate = new Date('2027-03-08T11:21:00+05:30');
+
+    // Convert Arabic numeral string to Devanagari
+    function toDeva(n) {
+        return String(n).replace(/[0-9]/g, d => '०१२३४५६७८९'[+d]);
+    }
+
+    function pad2(n) { return n < 10 ? '0' + n : '' + n; }
+
+    function updateCountdown() {
+        const diff = weddingDate - new Date();
+        const el   = document.getElementById('countdown');
+        if (diff <= 0) {
+            el.textContent = 'शुभमंगल सावधान! आजचा शुभ दिवस! 🎊';
+            return;
+        }
+        const days  = Math.floor(diff / 86400000);
+        const hours = Math.floor((diff % 86400000) / 3600000);
+        const mins  = Math.floor((diff % 3600000)  / 60000);
+        const secs  = Math.floor((diff % 60000)    / 1000);
+        el.textContent =
+            toDeva(days)        + ' दिवस  ' +
+            toDeva(pad2(hours)) + ' तास  ' +
+            toDeva(pad2(mins))  + ' मिनिटे  ' +
+            toDeva(pad2(secs))  + ' सेकंद';
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+</script>
+
+</body>
+</html>
