@@ -501,6 +501,131 @@
 
         .footer-tag { font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 8px; }
 
+        /* ===== ENTRY OVERLAY ===== */
+        .entry-overlay {
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(160deg, #450A0A 0%, #6B1515 60%, #8B1A1A 100%);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: opacity 0.8s ease;
+            overflow: hidden;
+        }
+
+        .entry-overlay::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: repeating-linear-gradient(
+                45deg,
+                transparent 0px, transparent 14px,
+                rgba(200,151,42,0.055) 14px, rgba(200,151,42,0.055) 15px
+            );
+            pointer-events: none;
+        }
+
+        .entry-kinar {
+            width: 100%;
+            height: 10px;
+            flex-shrink: 0;
+            position: relative;
+            background: repeating-linear-gradient(
+                90deg,
+                #450A0A 0px, #450A0A 16px,
+                #C8972A 16px, #C8972A 20px,
+                #D4621A 20px, #D4621A 36px,
+                #C8972A 36px, #C8972A 40px
+            );
+        }
+
+        .entry-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 32px;
+            text-align: center;
+            position: relative;
+        }
+
+        .entry-om {
+            font-size: 56px;
+            color: #E8C060;
+            display: block;
+            margin-bottom: 6px;
+            animation: omGlow 3.5s ease-in-out infinite;
+        }
+
+        .entry-rule {
+            width: 75%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #E8C060, transparent);
+            margin: 14px auto;
+        }
+
+        .entry-shubh {
+            font-family: 'Noto Serif Devanagari', 'Mangal', serif;
+            font-size: 21px;
+            font-weight: 700;
+            color: #E8C060;
+            letter-spacing: 3px;
+        }
+
+        .entry-names {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 18px 0 6px;
+        }
+
+        .entry-name {
+            font-family: 'Noto Serif Devanagari', 'Mangal', serif;
+            font-size: 34px;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .entry-heart {
+            font-size: 22px;
+            color: #E8C060;
+            animation: entryPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes entryPulse {
+            0%, 100% { transform: scale(1);    }
+            50%       { transform: scale(1.2);  }
+        }
+
+        .entry-meta {
+            font-size: 13px;
+            color: rgba(232,192,96,0.72);
+            margin-bottom: 36px;
+        }
+
+        .entry-cta {
+            color: #E8C060;
+            font-family: 'Noto Serif Devanagari', 'Mangal', serif;
+            font-size: 15px;
+            line-height: 2;
+        }
+
+        .entry-cta-icon {
+            font-size: 28px;
+            display: block;
+            margin-bottom: 6px;
+            animation: tapBounce 1.4s ease-in-out infinite;
+        }
+
+        @keyframes tapBounce {
+            0%, 100% { transform: translateY(0);    }
+            50%       { transform: translateY(-9px); }
+        }
+
         /* ===== RESPONSIVE ===== */
         @media (max-width: 360px) {
             .name-big { font-size: 34px; }
@@ -579,6 +704,40 @@
     </style>
 </head>
 <body>
+
+<!-- ENTRY SPLASH OVERLAY — tap to open + start music -->
+<div class="entry-overlay" id="entryOverlay">
+    <div class="entry-kinar"></div>
+    <div class="entry-body">
+        <svg width="130" height="82" viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <ellipse cx="42"  cy="84" rx="19" ry="44" fill="rgba(200,151,42,0.32)" transform="rotate(-48 42 84)"/>
+            <ellipse cx="158" cy="84" rx="19" ry="44" fill="rgba(200,151,42,0.32)" transform="rotate(48 158 84)"/>
+            <ellipse cx="70"  cy="80" rx="21" ry="48" fill="rgba(200,151,42,0.52)" transform="rotate(-25 70 80)"/>
+            <ellipse cx="130" cy="80" rx="21" ry="48" fill="rgba(200,151,42,0.52)" transform="rotate(25 130 80)"/>
+            <ellipse cx="100" cy="75" rx="22" ry="50" fill="rgba(200,151,42,0.88)"/>
+            <ellipse cx="100" cy="96" rx="40" ry="6"  fill="rgba(200,151,42,0.22)"/>
+            <circle cx="100" cy="62" r="13" fill="rgba(212,98,26,0.82)"/>
+            <circle cx="100" cy="62" r="7"  fill="rgba(240,192,64,0.95)"/>
+            <circle cx="100" cy="62" r="3"  fill="rgba(107,21,21,0.88)"/>
+        </svg>
+        <span class="entry-om">ॐ</span>
+        <div class="entry-rule"></div>
+        <div class="entry-shubh">✦ &nbsp; शुभ विवाह &nbsp; ✦</div>
+        <div class="entry-names">
+            <span class="entry-name">प्रतीक</span>
+            <span class="entry-heart">♡</span>
+            <span class="entry-name">निकिता</span>
+        </div>
+        <div class="entry-meta">०८ मार्च २०२७ &nbsp;·&nbsp; जळगाव</div>
+        <div class="entry-rule"></div>
+        <div class="entry-cta">
+            <span class="entry-cta-icon">👆</span>
+            लग्नपत्रिका पाहण्यासाठी स्पर्श करा
+        </div>
+    </div>
+    <div class="entry-kinar"></div>
+</div>
+
 
 <!-- ROSE PETAL SHOWER LAYER -->
 <div class="petals-layer" id="petals" aria-hidden="true"></div>
@@ -933,10 +1092,19 @@
         }
     })();
 
-    // ===== BACKGROUND MUSIC =====
-    const bgm = document.getElementById('bgm');
+    // ===== ENTRY OVERLAY + MUSIC =====
+    const overlay = document.getElementById('entryOverlay');
+    const bgm     = document.getElementById('bgm');
     bgm.volume = 0.30;
-    setTimeout(() => { bgm.play().catch(() => {}); }, 2000);
+    document.body.style.overflow = 'hidden';
+
+    overlay.addEventListener('click', () => {
+        bgm.play().catch(() => {});
+        overlay.style.opacity = '0';
+        overlay.style.pointerEvents = 'none';
+        document.body.style.overflow = '';
+        setTimeout(() => overlay.remove(), 900);
+    }, { once: true });
 </script>
 
 </body>
