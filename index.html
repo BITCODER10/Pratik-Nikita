@@ -511,9 +511,108 @@
         @media (min-width: 480px) {
             body { padding: 24px 20px 40px; }
         }
+
+        /* ===== ROSE PETAL SHOWER ===== */
+        .petals-layer {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1000;
+            overflow: hidden;
+        }
+
+        .petal {
+            position: absolute;
+            top: -60px;
+            opacity: 0;
+            will-change: transform;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes fall-a {
+            0%   { transform: translateY(0)      translateX(0)     rotate(0deg);    opacity: 0.88; }
+            25%  { transform: translateY(25vh)   translateX(45px)  rotate(80deg);   opacity: 0.75; }
+            55%  { transform: translateY(55vh)   translateX(-25px) rotate(190deg);  opacity: 0.55; }
+            80%  { transform: translateY(80vh)   translateX(30px)  rotate(290deg);  opacity: 0.30; }
+            100% { transform: translateY(112vh)  translateX(10px)  rotate(360deg);  opacity: 0;    }
+        }
+
+        @keyframes fall-b {
+            0%   { transform: translateY(0)      translateX(0)      rotate(15deg);   opacity: 0.85; }
+            25%  { transform: translateY(25vh)   translateX(-55px)  rotate(-65deg);  opacity: 0.72; }
+            55%  { transform: translateY(55vh)   translateX(30px)   rotate(-185deg); opacity: 0.52; }
+            80%  { transform: translateY(80vh)   translateX(-40px)  rotate(-285deg); opacity: 0.28; }
+            100% { transform: translateY(112vh)  translateX(-15px)  rotate(-360deg); opacity: 0;    }
+        }
+
+        @keyframes fall-c {
+            0%   { transform: translateY(0)      translateX(0)     rotate(-20deg);  opacity: 0.90; }
+            33%  { transform: translateY(33vh)   translateX(60px)  rotate(100deg);  opacity: 0.70; }
+            66%  { transform: translateY(66vh)   translateX(-30px) rotate(220deg);  opacity: 0.42; }
+            100% { transform: translateY(112vh)  translateX(45px)  rotate(340deg);  opacity: 0;    }
+        }
+
+        @keyframes fall-d {
+            0%   { transform: translateY(0)      translateX(0)      rotate(30deg);  opacity: 0.80; }
+            33%  { transform: translateY(33vh)   translateX(-50px)  rotate(-90deg); opacity: 0.65; }
+            66%  { transform: translateY(66vh)   translateX(25px)   rotate(-210deg);opacity: 0.38; }
+            100% { transform: translateY(112vh)  translateX(-40px)  rotate(-330deg);opacity: 0;    }
+        }
+
+        @keyframes fall-e {
+            0%   { transform: translateY(0)      translateX(0)     rotate(45deg);   opacity: 0.82; }
+            20%  { transform: translateY(20vh)   translateX(35px)  rotate(117deg);  opacity: 0.75; }
+            50%  { transform: translateY(50vh)   translateX(60px)  rotate(225deg);  opacity: 0.52; }
+            80%  { transform: translateY(80vh)   translateX(22px)  rotate(333deg);  opacity: 0.28; }
+            100% { transform: translateY(112vh)  translateX(55px)  rotate(405deg);  opacity: 0;    }
+        }
+
+        @keyframes fall-f {
+            0%   { transform: translateY(0)      translateX(0)      rotate(-45deg); opacity: 0.86; }
+            20%  { transform: translateY(20vh)   translateX(-38px)  rotate(-117deg);opacity: 0.73; }
+            50%  { transform: translateY(50vh)   translateX(-65px)  rotate(-225deg);opacity: 0.50; }
+            80%  { transform: translateY(80vh)   translateX(-28px)  rotate(-333deg);opacity: 0.26; }
+            100% { transform: translateY(112vh)  translateX(-58px)  rotate(-405deg);opacity: 0;    }
+        }
+
+        /* ===== MUSIC BUTTON ===== */
+        .music-btn {
+            position: fixed;
+            bottom: 22px;
+            right: 18px;
+            z-index: 2000;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 2px solid var(--gold);
+            background: var(--deep-maroon);
+            color: var(--gold-lt);
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 18px rgba(69,10,10,0.5);
+            transition: transform 0.2s, opacity 0.2s;
+        }
+
+        .music-btn:active { transform: scale(0.92); }
     </style>
 </head>
 <body>
+
+<!-- ROSE PETAL SHOWER LAYER -->
+<div class="petals-layer" id="petals" aria-hidden="true"></div>
+
+<!-- BACKGROUND MUSIC -->
+<audio id="bgm" loop preload="auto">
+    <source src="a.mp3" type="audio/mpeg">
+</audio>
+
+<!-- FLOATING MUSIC TOGGLE -->
+<button class="music-btn" id="musicBtn" title="संगीत">🎵</button>
+
 <div class="wrap">
 <div class="card">
 
@@ -787,23 +886,18 @@
 </div><!-- /wrap -->
 
 <script>
-    // Wedding date in IST
+    // ===== COUNTDOWN =====
     const weddingDate = new Date('2027-03-08T11:21:00+05:30');
 
-    // Convert Arabic numeral string to Devanagari
     function toDeva(n) {
         return String(n).replace(/[0-9]/g, d => '०१२३४५६७८९'[+d]);
     }
-
     function pad2(n) { return n < 10 ? '0' + n : '' + n; }
 
     function updateCountdown() {
         const diff = weddingDate - new Date();
         const el   = document.getElementById('countdown');
-        if (diff <= 0) {
-            el.textContent = 'शुभमंगल सावधान! आजचा शुभ दिवस! 🎊';
-            return;
-        }
+        if (diff <= 0) { el.textContent = 'शुभमंगल सावधान! आजचा शुभ दिवस! 🎊'; return; }
         const days  = Math.floor(diff / 86400000);
         const hours = Math.floor((diff % 86400000) / 3600000);
         const mins  = Math.floor((diff % 3600000)  / 60000);
@@ -814,9 +908,79 @@
             toDeva(pad2(mins))  + ' मिनिटे  ' +
             toDeva(pad2(secs))  + ' सेकंद';
     }
-
     setInterval(updateCountdown, 1000);
     updateCountdown();
+
+    // ===== ROSE PETAL SHOWER =====
+    (function spawnPetals() {
+        const container = document.getElementById('petals');
+        const anims     = ['fall-a','fall-b','fall-c','fall-d','fall-e','fall-f'];
+
+        // [highlight color, deep color] — roses + marigolds
+        const palettes = [
+            ['#FFD6E0','#E84393'],
+            ['#FFB3C6','#C0392B'],
+            ['#FF9CAD','#A8001C'],
+            ['#FFCDD8','#FF4466'],
+            ['#FFC8D4','#E05070'],
+            ['#FFD9A0','#D4621A'],  // marigold
+            ['#FFE0A0','#E08000'],  // marigold
+        ];
+
+        const COUNT = 30;
+
+        for (let i = 0; i < COUNT; i++) {
+            const el  = document.createElement('div');
+            el.className = 'petal';
+
+            const size    = Math.random() * 14 + 11;          // 11–25 px
+            const pal     = palettes[Math.floor(Math.random() * palettes.length)];
+            const left    = Math.random() * 102 - 1;          // –1 % to 101 %
+            const dur     = Math.random() * 9 + 11;           // 11–20 s  (slow)
+            const delay   = Math.random() * -20;              // start mid-animation
+            const anim    = anims[Math.floor(Math.random() * anims.length)];
+            // alternate petal shapes
+            const shapes  = ['50% 0 50% 0','0 50% 0 50%','50% 50% 0 50%','50% 0 50% 50%'];
+            const shape   = shapes[Math.floor(Math.random() * shapes.length)];
+
+            el.style.cssText = `
+                width:${size}px;
+                height:${size * 1.55}px;
+                left:${left}%;
+                background: radial-gradient(ellipse at 38% 32%, ${pal[0]}, ${pal[1]});
+                border-radius:${shape};
+                animation-name:${anim};
+                animation-duration:${dur}s;
+                animation-delay:${delay}s;
+            `;
+            container.appendChild(el);
+        }
+    })();
+
+    // ===== BACKGROUND MUSIC =====
+    const bgm      = document.getElementById('bgm');
+    const musicBtn = document.getElementById('musicBtn');
+    let   playing  = false;
+
+    function setIcon() { musicBtn.textContent = playing ? '🔊' : '🎵'; }
+
+    bgm.volume = 0.30;
+
+    // Attempt autoplay (will succeed on some browsers/desktop)
+    bgm.play().then(() => { playing = true; setIcon(); }).catch(() => {
+        // Blocked (most mobile) — button already visible for user to tap
+    });
+
+    musicBtn.addEventListener('click', () => {
+        if (playing) {
+            bgm.pause();
+            playing = false;
+        } else {
+            bgm.play();
+            playing = true;
+        }
+        setIcon();
+    });
 </script>
 
 </body>
